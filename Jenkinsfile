@@ -3,7 +3,7 @@ pipeline {
         label '!windows'
     }
 
-    enviroment {
+    environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE = 'sqlite'
     }
