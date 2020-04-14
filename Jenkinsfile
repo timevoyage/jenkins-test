@@ -1,6 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
@@ -12,7 +19,7 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                sh 'echo "Success!"; exit 0'   
+                sh 'echo "Success!"; exit 0'
             }
         }
     }
@@ -21,7 +28,7 @@ pipeline {
             echo 'This will always run'
         }
         success {
-            echo 'This will run oly if successful'
+            echo 'This will run only if successful'
         }
         failure {
             echo 'This will run only if failed'
